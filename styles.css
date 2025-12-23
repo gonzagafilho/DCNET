@@ -619,3 +619,13 @@ footer {
   }
 }
 
+
+
+/* ===== Estilo premium DCNET ===== */
+.hero {
+  background: linear-gradient(135deg, #0a1f44, #0d47a1, #1976d2);
+}
+
+.logo {
+  filter: hue-rotate(200deg) saturate(1.8);
+}
