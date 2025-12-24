@@ -37,10 +37,11 @@
 </head>
 
   <body>
+     <link rel="stylesheet" href="styles.css" />
     <header class="topbar">
       <div class="container topbar__inner">
-        <a class="brand" href="#hero" aria-label="DCNET Infinyt">
-          <img src="imagem/logo.svg.png" alt="Logo DCNET Infinyt" class="logo" />
+        <a class="brand" href="#hero" aria-label="DCNET Infinity">
+          <img src="imagem/logo.svg.png" alt="Logo DCNET Infinity" class="logo" />
         </a>
         
         <button
@@ -77,7 +78,7 @@
               <a class="btn btn--primary" href="#planos">Ver planos</a>
               <a
                 class="btn btn--outline"
-                href="https://wa.me/5561998936443"
+                href="https://wa.me/555561998936443"
                 target="_blank"
                 rel="noopener"
               >
@@ -98,7 +99,7 @@
 
       <section id="diferenciais" class="features">
         <div class="container">
-          <h2>Por que escolher a DCNET Infinyt?</h2>
+          <h2>Por que escolher a DCNET Infinity?</h2>
           <div class="features__grid">
             <article class="feature-card">
               <div class="feature-card__icon" aria-hidden="true">⚡</div>
@@ -147,7 +148,7 @@
             <article class="plan-card">
               <header>
                 <span class="plan-card__tag">Básico</span>
-                <h3>300&nbsp;MB</h3>
+                <h3>350&nbsp;MB</h3>
               </header>
               <p class="plan-card__price">
                 <span class="plan-card__currency">R$</span>78
@@ -160,7 +161,7 @@
               </ul>
               <a
                 class="btn btn--secondary"
-                href="https://wa.me/5561998936443?text=Tenho%20interesse%20no%20plano%20300%20MB"
+                href="https://wa.me/55556199893643??text=Tenho%20interesse%20no%20plano%20600%20MB"
                 target="_blank"
                 rel="noopener"
               >
@@ -171,7 +172,7 @@
             <article class="plan-card">
               <header>
                 <span class="plan-card__tag">Intermediário</span>
-                <h3>350&nbsp;MB</h3>
+                <h3>400&nbsp;MB</h3>
               </header>
               <p class="plan-card__price">
                 <span class="plan-card__currency">R$</span>88
@@ -184,7 +185,7 @@
               </ul>
               <a
                 class="btn btn--secondary"
-                href="https://wa.me/5561991374910?text=Tenho%20interesse%20no%20plano%20350%20MB"
+                href="https://wa.me/555561998936443?text=Tenho%20interesse%20no%20plano%20600%20MB"
                 target="_blank"
                 rel="noopener"
               >
@@ -195,7 +196,7 @@
             <article class="plan-card">
               <header>
                 <span class="plan-card__tag">Básico+</span>
-                <h3>400&nbsp;MB</h3>
+                <h3>500&nbsp;MB</h3>
               </header>
               <p class="plan-card__price">
                 <span class="plan-card__currency">R$</span>98
@@ -208,7 +209,7 @@
               </ul>
               <a
                 class="btn btn--secondary"
-                href="https://wa.me/5561998936443?text=Tenho%20interesse%20no%20plano%20400%20MB"
+                href="https://wa.me/555561998936443?text=Tenho%20interesse%20no%20plano%20600%20MB"
                 target="_blank"
                 rel="noopener"
               >
@@ -219,7 +220,7 @@
             <article class="plan-card plan-card--highlight">
               <header>
                 <span class="plan-card__tag">Super Rápido</span>
-                <h3>500&nbsp;MB</h3>
+                <h3>600&nbsp;MB</h3>
               </header>
               <p class="plan-card__price">
                 <span class="plan-card__currency">R$</span>119
@@ -232,7 +233,7 @@
               </ul>
               <a
                 class="btn btn--primary"
-                href="https://wa.me/5561991374910?text=Tenho%20interesse%20no%20plano%20500%20MB"
+                href="https://wa.me/555561998936443?text=Tenho%20interesse%20no%20plano%20600%20MB"
                 target="_blank"
                 rel="noopener"
               >
@@ -253,7 +254,7 @@
       <section id="contato" class="contact">
         <div class="container contact__grid">
           <div>
-            <h2>Fale com a DCNET Infinyt</h2>
+            <h2>Fale com a DCNET Infinity</h2>
             <p>
               Estamos no Setor Residencial Nova Esperança - Conj. A - lote 02.
               Atendimento personalizado para sua região.
@@ -261,25 +262,19 @@
             <ul class="contact__channels">
               <li>
                 <strong>WhatsApp:</strong>
-                <a href="https://wa.me/5561998936443" target="_blank" rel="noopener"
+                <a href="https://wa.me/555561998936443" target="_blank" rel="noopener"
                   >(61) 99893-6443</a
                 >
               </li>
               <li>
-                <strong>WhatsApp:</strong>
-                <a href="https://wa.me/5561991374910" target="_blank" rel="noopener"
-                  >(61) 99137-4910</a
-                >
-              </li>
-              <li>
                 <strong>E-mail:</strong>
-                <a href="mailto:contato@dcnetinfinyt.com.br"
-                  >contato@dcnetinfinyt.com.br</a
+                <a href="mailto:dc.net.infinity@gmail.com"
+                  >dc.net.infinity@gmail.com</a
                 >
               </li>
             </ul>
           </div>
-          <form class="contact__form" action="https://formspree.io/f/mnqeqaov" method="POST">
+          <form class="contact__form" id="whatsappForm">
             <h3>Solicite uma proposta</h3>
             <label>
               Nome
@@ -289,7 +284,7 @@
               WhatsApp
               <input
                 type="tel"
-                name="phone"
+                name="whatsapp"
                 placeholder="(61) 90000-0000"
                 required
               />
@@ -305,7 +300,7 @@
             </label>
             <label>
               Plano de interesse
-              <select name="plan">
+              <select name="Plano">
                 <option value="350MB">350 MB</option>
                 <option value="400MB">400 MB</option>
                 <option value="500MB">500 MB</option>
@@ -321,7 +316,7 @@
                 placeholder="Conte sua necessidade"
               ></textarea>
             </label>
-            <button class="btn btn--primary" type="submit">
+            <button class="btn btn--primary" type="button" onclick="enviarWhatsApp()">
               Enviar mensagem
             </button>
             <small class="form__disclaimer">
@@ -334,10 +329,9 @@
 
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span id="year"></span> DCNET Infinyt. Todos os direitos reservados.</p>
+        <p>© <span id="year"></span> DCNET Infinity. Todos os direitos reservados.</p>
         <div class="footer__links">
           <a href="tel:+5561998936443">(61) 99893-6443</a>
-          <a href="tel:+5561991374910">(61) 99137-4910</a>
           <a href="https://instagram.com" target="_blank" rel="noopener"
             >Instagram</a
           >

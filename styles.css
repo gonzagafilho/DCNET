@@ -621,11 +621,26 @@ footer {
 
 
 
-/* ===== Estilo premium DCNET ===== */
-.hero {
-  background: linear-gradient(135deg, #0a1f44, #0d47a1, #1976d2);
-}
-
-.logo {
-  filter: hue-rotate(200deg) saturate(1.8);
+/* ===== Mobile Optimization ===== */
+@media (max-width: 768px) {
+  .topbar__inner {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero__content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero__image {
+    margin-top: 20px;
+  }
+  .plans__grid {
+    grid-template-columns: 1fr;
+  }
+  .features__grid {
+    grid-template-columns: 1fr;
+  }
+  .cta-group {
+    flex-direction: column;
+  }
 }
