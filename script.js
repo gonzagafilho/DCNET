@@ -226,16 +226,19 @@ function handleLeadFlow(userText) {
   }
 
   if (dcchatStep === 4) {
-    window.dcchatLead.plan = t;
-    dcchatStep = 0;
+  window.dcchatLead.plan = t;
+  dcchatStep = 0;
 
-    addMsg(
-      "Show! ✅ Já registrei seus dados.\n" +
-      "Agora me diga: você quer *instalação* ou tirar *dúvida* antes?",
-      "bot"
-    );
-    return true;
-  }
+  console.log("[DCCHAT] Lead pronto:", window.dcchatLead);
+  pingLeadToBackend();
+
+  addMsg(
+    "Show! ✅ Já registrei seus dados.\n" +
+    "Agora me diga: você quer *instalação* ou tirar *dúvida* antes?",
+    "bot"
+  );
+  return true;
+}
 
   if (dcchatStep === 4) {
   window.dcchatLead.plan = t;
@@ -307,20 +310,23 @@ function handleLeadFlow(userText) {
 async function pingLeadToBackend() {
   try {
     const payload = {
-      message: "comercial", // força intent sales no backend
+      message: "comercial",
       name: window.dcchatLead?.name || "",
       phone: window.dcchatLead?.phone || "",
       neighborhood: window.dcchatLead?.neighborhood || "",
       plan: window.dcchatLead?.plan || ""
     };
 
-    await fetch(CHAT_API_URL, {
+    console.log("[DCCHAT] Enviando lead:", payload);
+
+    const r = await fetch(CHAT_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
     });
+
+    console.log("[DCCHAT] Resposta ping:", r.status);
   } catch (e) {
-    // silencioso (não atrapalha o usuário)
     console.warn("Falha ao salvar lead", e);
   }
 }
