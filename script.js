@@ -237,6 +237,21 @@ function handleLeadFlow(userText) {
     return true;
   }
 
+  if (dcchatStep === 4) {
+  window.dcchatLead.plan = t;
+  dcchatStep = 0;
+
+  // ✅ SALVA O LEAD AUTOMATICAMENTE
+  pingLeadToBackend();
+
+  addMsg(
+    "Show! ✅ Já registrei seus dados.\n" +
+    "Agora me diga: você quer *instalação* ou tirar *dúvida* antes?",
+    "bot"
+  );
+  return true;
+}
+
   return false;
 }
   // Abrir/fechar
@@ -288,7 +303,27 @@ function handleLeadFlow(userText) {
 
   sendMsg();
 });
+// salva lead no backend (silencioso)
+async function pingLeadToBackend() {
+  try {
+    const payload = {
+      message: "comercial", // força intent sales no backend
+      name: window.dcchatLead?.name || "",
+      phone: window.dcchatLead?.phone || "",
+      neighborhood: window.dcchatLead?.neighborhood || "",
+      plan: window.dcchatLead?.plan || ""
+    };
 
+    await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+  } catch (e) {
+    // silencioso (não atrapalha o usuário)
+    console.warn("Falha ao salvar lead", e);
+  }
+}
   // Mensagem inicial (1 vez)
   const started = localStorage.getItem("dcnet_chat_started") === "1";
   if (!started) {
