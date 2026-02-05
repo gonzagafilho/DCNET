@@ -49,21 +49,30 @@ footer {
   position: relative;
 }
 
-.topbar{
+.topbar {
   position: sticky;
   top: 0;
-  z-index: 50;
-  padding: 1rem 0;        /* diminui a altura */
-  background: rgba(6, 16, 40, 0.85); /* fundo do header */
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 100;
+
+  background: linear-gradient(
+    100deg,
+    #213144 0%,
+    #0b3c9d 60%,
+    #12285f 100%
+  );
+
+  box-shadow:
+    0 4px 20px rgba(10, 124, 255, 0.35),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
+
+  border-bottom: 1px solid rgba(255,255,255,0.12);
 }
 
 .topbar__inner {
+  padding: 0.85rem 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 0;
 }
 
 .brand {
@@ -129,18 +138,12 @@ footer {
   color: var(--color-secondary);
 }
 
- 
   .hero {
   position: relative;
   overflow: hidden;
   isolation: isolate;
-
-  padding: 4rem 0 3.5rem;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 80, 197, 0.25),
-    rgba(8, 21, 54, 0.9)
-  );
+  padding: 2.6rem 0 2.4rem;
+  background-color: transparent;
 }
 /* ===== FUNDO COM A MESMA IMAGEM DO HERO ===== */
 .hero::before {
@@ -151,31 +154,22 @@ footer {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  transform: scale(1.06);
+  transform: scale(1.05);
   filter: blur(1.5px);
-  opacity: 0.55;
+  opacity: 0.6;
   z-index: -2;
 }
 
-/* ===== OVERLAY EXTRA PRA DEIXAR O TEXTO LEGÍVEL ===== */
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(18, 80, 197, 0.35),
-    rgba(8, 21, 54, 0.92)
-  );
-  z-index:-1;
-}
-
 .hero__content {
+  position: relative;
+  z-index: 1;
+
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3.5rem;
+  gap: 2.5rem;
   align-items: center;
 }
+
 
 .hero__tagline {
   font-weight: 600;
@@ -687,3 +681,222 @@ footer {
     flex-direction: column;
   }
 }
+.nav a {
+  position: relative;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background: #0a7cff;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+/* ===========================
+   CHATBOT WIDGET (DCChat)
+=========================== */
+:root {
+  --dcchat-neon: #12a8ff;
+  --dcchat-neon2: #2de1ff;
+  --dcchat-dark: #07162f;
+  --dcchat-dark2: #0b2c5a;
+}
+
+.dcchat-fab {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+
+  width: 58px;
+  height: 58px;
+  border: 0;
+  border-radius: 16px;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, rgba(18,168,255,1), rgba(45,225,255,0.9));
+  box-shadow: 0 16px 40px rgba(0,0,0,0.35), 0 0 28px rgba(18,168,255,0.35);
+  color: #001426;
+
+  display: grid;
+  place-items: center;
+}
+
+.dcchat-fab__icon {
+  font-size: 20px;
+  transform: translateY(1px);
+}
+
+.dcchat-fab__dot {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #00ff9a;
+  box-shadow: 0 0 18px rgba(0,255,154,0.75);
+  display: none;
+}
+
+.dcchat-dock {
+  position: fixed;
+  right: 18px;
+  bottom: 90px;
+  z-index: 9999;
+
+  width: min(380px, calc(100vw - 36px));
+  height: 520px;
+
+  transform: translateY(10px);
+  opacity: 0;
+  pointer-events: none;
+  transition: 180ms ease;
+
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 22px 60px rgba(0,0,0,0.45);
+}
+
+.dcchat-dock.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dcchat {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+  background: linear-gradient(180deg, rgba(7,22,47,0.95), rgba(11,44,90,0.92));
+  border: 1px solid rgba(18,168,255,0.25);
+}
+
+.dcchat__header {
+  padding: 14px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(135deg, rgba(18,168,255,0.25), rgba(7,22,47,0.95));
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.dcchat__brand strong {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+.dcchat__brand small {
+  display: block;
+  font-size: 12px;
+  opacity: 0.85;
+  margin-top: 2px;
+}
+
+.dcchat__close {
+  border: 0;
+  background: transparent;
+  color: rgba(255,255,255,0.9);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 6px 10px;
+  border-radius: 10px;
+}
+.dcchat__close:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.dcchat__body {
+  padding: 14px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dcchat__msg {
+  max-width: 85%;
+  padding: 10px 12px;
+  border-radius: 14px;
+  font-size: 13px;
+  line-height: 1.35;
+  border: 1px solid rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+}
+
+.dcchat__msg--bot {
+  align-self: flex-start;
+  background: rgba(255,255,255,0.06);
+}
+
+.dcchat__msg--me {
+  align-self: flex-end;
+  background: linear-gradient(135deg, rgba(18,168,255,0.35), rgba(45,225,255,0.15));
+  border-color: rgba(18,168,255,0.25);
+}
+
+.dcchat__quick {
+  padding: 10px 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.dcchat__pill {
+  border: 1px solid rgba(18,168,255,0.25);
+  background: rgba(7,22,47,0.4);
+  color: rgba(255,255,255,0.9);
+  padding: 8px 10px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.dcchat__pill:hover {
+  background: rgba(18,168,255,0.12);
+}
+
+.dcchat__form {
+  padding: 12px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.dcchat__input {
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(0,0,0,0.25);
+  color: #fff;
+  padding: 12px 12px;
+  outline: none;
+  font-size: 13px;
+}
+.dcchat__input:focus {
+  border-color: rgba(18,168,255,0.55);
+  box-shadow: 0 0 0 4px rgba(18,168,255,0.12);
+}
+
+.dcchat__send {
+  border: 0;
+  border-radius: 14px;
+  padding: 12px 14px;
+  cursor: pointer;
+  background: linear-gradient(135deg, rgba(18,168,255,1), rgba(45,225,255,0.85));
+  color: #001426;
+  font-weight: 700;
+  font-size: 13px;
+}
+.dcchat__send:hover {
+  filter: brightness(1.05);
+}
+/* =========================== */
