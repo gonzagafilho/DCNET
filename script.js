@@ -2,7 +2,7 @@
 // CONFIG GLOBAL
 // ===============================
 const WHATSAPP_OFICIAL_SITE = "5561991374910"; // DDD + número, sem espaços
-
+const CHAT_API_URL = "https://chatbot.dcinfinity.net.br/api/chat";
 function onlyDigits(str) {
   return (str || "").replace(/\D/g, "");
 }
@@ -168,7 +168,7 @@ function enviarWhatsApp() {
       plan: window.dcchatLead.plan
     };
 
-    const res = await fetch(API_URL, {
+    const res = await fetch(CHAT_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
@@ -314,7 +314,7 @@ async function pingLeadToBackend() {
       plan: window.dcchatLead?.plan || ""
     };
 
-    await fetch(API_URL, {
+    await fetch(CHAT_API_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload)
