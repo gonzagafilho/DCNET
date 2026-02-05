@@ -49,14 +49,14 @@ footer {
   position: relative;
 }
 
-.topbar {
+.topbar{
   position: sticky;
   top: 0;
-  z-index: 999;
-  backdrop-filter: blur(20px);
-  background: rgba(11, 21, 49, 0.95);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+  padding: 1rem 0;        /* diminui a altura */
+  background: rgba(6, 16, 40, 0.85); /* fundo do header */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 
 .topbar__inner {
@@ -129,13 +129,45 @@ footer {
   color: var(--color-secondary);
 }
 
-.hero {
-  padding: 6.5rem 0 5.5rem;
+ 
+  .hero {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+
+  padding: 4rem 0 3.5rem;
   background: linear-gradient(
     135deg,
     rgba(18, 80, 197, 0.25),
     rgba(8, 21, 54, 0.9)
   );
+}
+/* ===== FUNDO COM A MESMA IMAGEM DO HERO ===== */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("imagem/foto1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: scale(1.06);
+  filter: blur(1.5px);
+  opacity: 0.55;
+  z-index: -2;
+}
+
+/* ===== OVERLAY EXTRA PRA DEIXAR O TEXTO LEGÍVEL ===== */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(18, 80, 197, 0.35),
+    rgba(8, 21, 54, 0.92)
+  );
+  z-index:-1;
 }
 
 .hero__content {
@@ -157,12 +189,23 @@ footer {
   font-size: clamp(2.2rem, 4vw, 3.4rem);
   line-height: 1.1;
   margin-bottom: 1rem;
+  color: #ffffff;
+  text-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .hero__subtitle {
   color: var(--color-muted);
   max-width: 520px;
   margin-bottom: 2rem;
+}
+
+.hero h1,
+.hero__text p {
+  color: #ffffff;
+}
+
+.hero__subtitle {
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .cta-group {
