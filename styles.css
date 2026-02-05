@@ -50,22 +50,14 @@ footer {
 }
 
 .topbar {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-
   background: linear-gradient(
-    100deg,
-    #213144 0%,
-    #0b3c9d 60%,
-    #12285f 100%
+    90deg,
+    #03122b 0%,
+    #052b7a 50%,
+    #0a4dff 100%
   );
-
-  box-shadow:
-    0 4px 20px rgba(10, 124, 255, 0.35),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.08);
-
-  border-bottom: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 8px 30px rgba(10, 77, 255, 0.35);
+  border-bottom: 1px solid rgba(0, 180, 255, 0.25);
 }
 
 .topbar__inner {
@@ -132,8 +124,10 @@ footer {
   color: var(--color-muted);
   transition: color 0.3s ease;
 }
-
-.nav a:hover,
+.nav a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 8px rgba(0, 234, 255, 0.8);
+}
 .nav a:focus {
   color: var(--color-secondary);
 }
@@ -745,15 +739,18 @@ footer {
   box-shadow: 0 0 18px rgba(0,255,154,0.75);
   display: none;
 }
-
-.dcchat-dock {
+/* ===== Dock (caixa que abre) ===== */
+.dcchat-dock{
   position: fixed;
   right: 18px;
   bottom: 90px;
-  z-index: 9999;
+  z-index: 999999;
 
   width: min(380px, calc(100vw - 36px));
-  height: 520px;
+
+  /* ✅ FIX do corte: adapta à altura da tela */
+  height: min(520px, calc(100vh - 130px));
+  max-height: calc(100vh - 130px);
 
   transform: translateY(10px);
   opacity: 0;
@@ -763,20 +760,27 @@ footer {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 22px 60px rgba(0,0,0,0.45);
+  background: #ffffff;
 }
 
-.dcchat-dock.is-open {
+.dcchat-dock.is-open{
   transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
 
+/* opcional: ajuste pra tela baixa */
+@media (max-height: 700px){
+  .dcchat-dock{
+    bottom: 75px;
+    height: calc(100vh - 110px);
+    max-height: calc(100vh - 110px);
+  }
+}
+
 .dcchat {
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto auto;
-  background: linear-gradient(180deg, rgba(7,22,47,0.95), rgba(11,44,90,0.92));
-  border: 1px solid rgba(18,168,255,0.25);
+  background: #ffffff;
+  color: #0b1c33;
 }
 
 .dcchat__header {
@@ -784,8 +788,10 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(135deg, rgba(18,168,255,0.25), rgba(7,22,47,0.95));
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+
+  background: linear-gradient(135deg, #12a8ff, #2de1ff);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  color: #001426;
 }
 
 .dcchat__brand strong {
@@ -803,15 +809,15 @@ footer {
 
 .dcchat__close {
   border: 0;
-  background: transparent;
-  color: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.35);
+  color: #001426;
   cursor: pointer;
   font-size: 18px;
   padding: 6px 10px;
   border-radius: 10px;
 }
 .dcchat__close:hover {
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.55);
 }
 
 .dcchat__body {
@@ -828,19 +834,21 @@ footer {
   border-radius: 14px;
   font-size: 13px;
   line-height: 1.35;
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0,0,0,0.08);
+  backdrop-filter: none;
 }
 
 .dcchat__msg--bot {
   align-self: flex-start;
-  background: rgba(255,255,255,0.06);
+  background: #f1f5f9;
+  color: #0b1c33;
 }
 
 .dcchat__msg--me {
   align-self: flex-end;
-  background: linear-gradient(135deg, rgba(18,168,255,0.35), rgba(45,225,255,0.15));
-  border-color: rgba(18,168,255,0.25);
+  background: linear-gradient(135deg, #12a8ff, #2de1ff);
+  color: #001426;
+  border-color: rgba(18,168,255,0.35);
 }
 
 .dcchat__quick {
@@ -848,20 +856,21 @@ footer {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: #ffffff;
 }
 
 .dcchat__pill {
-  border: 1px solid rgba(18,168,255,0.25);
-  background: rgba(7,22,47,0.4);
-  color: rgba(255,255,255,0.9);
+  border: 1px solid rgba(18,168,255,0.45);
+  background: #ffffff;
+  color: #0b1c33;
   padding: 8px 10px;
   border-radius: 999px;
   cursor: pointer;
   font-size: 12px;
 }
 .dcchat__pill:hover {
-  background: rgba(18,168,255,0.12);
+  background: rgba(18,168,255,0.10);
 }
 
 .dcchat__form {
@@ -869,21 +878,22 @@ footer {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 10px;
-  border-top: 1px solid rgba(255,255,255,0.08);
+  border-top: 1px solid rgba(0,0,0,0.08);
+  background: #ffffff;
 }
 
 .dcchat__input {
   border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(0,0,0,0.25);
-  color: #fff;
+  border: 1px solid rgba(0,0,0,0.12);
+  background: #ffffff;
+  color: #0b1c33;
   padding: 12px 12px;
   outline: none;
   font-size: 13px;
 }
 .dcchat__input:focus {
-  border-color: rgba(18,168,255,0.55);
-  box-shadow: 0 0 0 4px rgba(18,168,255,0.12);
+  border-color: rgba(18,168,255,0.75);
+  box-shadow: 0 0 0 4px rgba(18,168,255,0.15);
 }
 
 .dcchat__send {
@@ -899,4 +909,112 @@ footer {
 .dcchat__send:hover {
   filter: brightness(1.05);
 }
-/* =========================== */
+/* ===========================
+   FIX: Chat sempre acima
+=========================== */
+.chatbot-toggle,
+.chatbot-panel,
+.chatbot-widget {
+  position: fixed !important;
+  z-index: 999999 !important;
+}
+
+body { overflow-x: hidden; }
+
+/* ===========================
+   CHATBOT – FULL SCREEN MOBILE
+=========================== */
+@media (max-width: 640px) {
+  .dcchat-dock {
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    transform: translateY(100%);
+  }
+
+  .dcchat-dock.is-open {
+    transform: translateY(0);
+  }
+
+  .dcchat {
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .dcchat-fab {
+    right: 16px;
+    bottom: 16px;
+  }
+}
+/* =========================================
+   DCCHAT - FULLSCREEN MOBILE (override final)
+   Cola no FINAL do styles.css
+========================================= */
+@media (max-width: 640px) {
+  /* Dock ocupa a tela toda */
+  .dcchat-dock {
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    padding: 0 !important;
+    z-index: 99999 !important;
+  }
+
+  /* Caixa do chat vira app */
+  .dcchat {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    max-height: 100vh !important;
+  }
+
+  /* Header fixo */
+  .dcchat__header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+  }
+
+  /* Barra rápida e form fixos */
+  .dcchat__quick {
+    position: sticky;
+    bottom: 64px; /* espaço do form */
+    z-index: 2;
+    backdrop-filter: blur(8px);
+  }
+
+  .dcchat__form {
+    position: sticky;
+    bottom: 0;
+    z-index: 3;
+  }
+
+  /* Corpo scrolla sem esconder input */
+  .dcchat__body {
+    height: calc(100vh - 56px - 48px - 64px) !important;
+    /* 56 header + 48 quick + 64 form (ajusta se necessário) */
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* FAB (botão flutuante) fica menor */
+  .dcchat-fab {
+    right: 14px !important;
+    bottom: 14px !important;
+    transform: scale(0.95);
+  }
+}
+
+/* iOS: altura correta em navegadores com barra dinâmica */
+@supports (height: 100dvh) {
+  @media (max-width: 640px) {
+    .dcchat-dock { height: 100dvh !important; }
+    .dcchat { height: 100dvh !important; }
+    .dcchat__body { height: calc(100dvh - 56px - 48px - 64px) !important; }
+  }
+}
