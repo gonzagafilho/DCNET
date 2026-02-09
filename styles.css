@@ -1018,3 +1018,106 @@ body { overflow-x: hidden; }
     .dcchat__body { height: calc(100dvh - 56px - 48px - 64px) !important; }
   }
 }
+/* ================================
+   HERO – IMAGEM EXCLUSIVA INTERNET RURAL
+================================ */
+
+.hero--rural {
+  background-image: url("imagem/rural-bg.jpg");
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Overlay escuro para leitura do texto */
+.hero--rural::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: 0;
+}
+
+/* Garantir que o conteúdo fique acima do overlay */
+.hero--rural .container {
+  position: relative;
+  z-index: 1;
+}
+/* Esconder imagem interna no hero rural */
+.hero--rural .hero__photo {
+  display: none;
+}
+/* ================================
+   HERO – FUNDO EXCLUSIVO INTERNET RURAL
+================================ */
+
+.hero--rural {
+  background-image: url("imagem/internet-rural-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.hero--rural::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.65)
+  );
+  z-index: 0;
+}
+
+.hero--rural .container {
+  position: relative;
+  z-index: 1;
+}
+/* HERO – FUNDO EXCLUSIVO INTERNET RURAL */
+.hero.hero--rural{
+  background-image: url("/imagem/internet-rural-bg.jpg") !important;
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  position: relative;
+}
+
+.hero.hero--rural::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.55);
+  z-index:0;
+}
+
+.hero.hero--rural .container{
+  position:relative;
+  z-index:1;
+}
+/* ================================
+   AJUSTE CARD HERO - INTERNET RURAL
+================================ */
+
+/* Card azul */
+.hero--rural .hero__card{
+  transform: scale(0.85);   /* diminui o tamanho (85%) */
+}
+.hero--rural .hero__card{
+  margin-top: 40px;   /* empurra pra baixo */
+}
+.hero--rural .hero__card{
+  padding: 20px 22px;
+}
+
+.hero--rural .hero__card strong{
+  font-size: 18px;
+}
+
+.hero--rural .hero__card span{
+  font-size: 14px;
+}
